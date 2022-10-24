@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react'
 import { BiInfoCircle, BiCheck, BiX } from "react-icons/bi";
 
-const REGEX_USERNAME = /^^[a-zA-Z\-]+$/
+const REGEX_USERNAME = /^^[a-zA-Z0-9\-]+$/
 const REGEX_PASSWORD = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
 
 const Register = () => {
@@ -15,9 +15,9 @@ const Register = () => {
 
 
     const checkUsername = (name : string) =>{
-        if(REGEX_USERNAME.test(name)){
+        setUsername(name)
+        if(REGEX_USERNAME.test(username) && username != ''){
             setValidUsername(true)
-            setUsername(name)
         }
         else{
             setValidPassword(false)
@@ -31,9 +31,17 @@ const Register = () => {
        value={username}
        onChange={(e)=>checkUsername(e.target.value)}
        />
-       
-       <input />
-       <input />
+
+       <input 
+        placeholder='Enter your Password'
+        value={password}
+        onChange={(e)=>setPassword(e.target.value)}
+       />
+       <input 
+        placeholder='Repeat your Password'
+        value={secondPassword}
+        onChange={(e)=>setSecondPassword(e.target.value)}
+       />
     </div>
   )
 }
