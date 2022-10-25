@@ -13,15 +13,23 @@ const Register = () => {
     const [secondPassword, setSecondPassword] = useState<string>('')
     const [match, setMatch] = useState<boolean>(false)
 
+    const testValidUsername =()=>{
+      if(REGEX_USERNAME.test(username)){
+        setValidUsername(true)
+      }
+      else{
+        setValidUsername(false)
+      }
+    }
 
-    const handleClick = (name : string) =>{
-        setUsername(name)
-        if(REGEX_USERNAME.test(username) ){
-            setValidUsername(true)
-        }
-        else{
-            setValidPassword(false)
-        }
+    const testValidPassword =()=>{
+      if(REGEX_PASSWORD.test(username)){
+        setValidUsername(true)
+      }
+      else{
+        setValidUsername(false)
+      }
+    }
     }
 
   return (
